@@ -1,0 +1,1 @@
+TAILLE_GRILLE = 10
