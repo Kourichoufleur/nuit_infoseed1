@@ -113,7 +113,7 @@ class Capchat(tk.Toplevel):
             # --- Relancer un nouveau captcha proprement ---
             new_stat, is_numeric = random.choice(all_stat)
             new_seuil = random.randint(1,10) if is_numeric else 0
-            Capchat(self.master, new_stat, new_seuil)
+            Capchat(self.master, new_stat, new_seuil, self.fun)
 
 # --- Test ---
 if __name__ == "__main__":
