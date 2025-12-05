@@ -73,7 +73,7 @@ def envoie_mdp(evevent=None):
     mot_de_passe.my_screen.destroy()
     clavier.my_screen.destroy()
     confirmation()
-    print(toi.password + "   " + toi.email)
+    # print(toi.password + "   " + toi.email)
 
 main = tk.Tk()
 encour = tk.BooleanVar(value=True)

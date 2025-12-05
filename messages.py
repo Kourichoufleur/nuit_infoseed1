@@ -1,20 +1,4 @@
 MESSAGES = {
-    "MSG_001": {
-        "titre_liste": "De: Support Client - Sujet: Bienvenue dans l'application !",
-        "corps": """
-Bonjour,
-
-Nous vous souhaitons la bienvenue dans votre nouvelle boîte de réception Tkinter !
-Ceci est un message de test statique qui ne nécessite aucune connexion Internet.
-
-Vous pouvez modifier le dictionnaire 'FAUX_MESSAGES' dans le code pour ajouter,
-modifier ou supprimer des messages.
-
-Cordialement,
-L'équipe de support
-""",
-        "expediteur": "support@app-tkinter.com"
-    },
     "MSG_002": {
         "titre_liste": "De: John Doe - Sujet: Réunion de Lundi",
         "corps": """
@@ -41,8 +25,7 @@ Rien à signaler.
         "expediteur": "system@admin.com"
     },
     "MSG_004": {"titre_liste": "De: L CamL Cam - Sujet: Rapport à la technologie",
-    "corps":"""Vous en avez mare de tout ça ? 
-    Nous aussi cliquez sur ce lien pour avoir votre text magique
+    "corps":"""Vous êtes vous rendu compte que de nos jours, la machine de Rube Goldberd, c'est nous ? Utilisateurs ? Chaque petite action numérique nécessite maintenant une quantité absurde d'étapes, d'inscriptions, de partage de données. Rejoignez la résistance du numérique et reprenez la main sur vos appareils. Renseignez vous sur le site de NIRD
     CLIQUER ICI
     """,
                 "expediteur":"L_Cam@albi_tarn.tarn",
