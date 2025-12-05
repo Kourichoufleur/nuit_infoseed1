@@ -94,9 +94,19 @@ Et rendez vous demain pour toujours plus de chouquettes !
 "MSG_009": {
         "titre_liste": "De: Archibald Prince Zaoudien - Sujet : ",
         "corps": """
-Salut mes chouquettes ! En parlant de chouquettes elles sont en promos hésitez pas !
-Et rendez vous demain pour toujours plus de chouquettes !
+Mesdames et m’esclaves,
+Vous, sous mon entrave, 
+Précommandez mes amulettes
+Sur mon internet : [CE SITE EST CENSURE DANS CE PAYS]
+
+Et quand la tempête viendra,
+Calme, vous resterez,
+Attendrez son apogée,
+En parallaxe, vous la verrez.
+Oui, ce porte-bonheur,
+Marche à toute heure,
+Elle est digne d’un empereur ! 
 """,
-        "expediteur": "Cyril.Lygnac@hmail.com"
+        "expediteur": "ArchibaldLeGoat1@Zaoudmail.com"
     },
 }
