@@ -4,7 +4,7 @@ import  tkinter.ttk as ttk
 import constants
 from clavier import Clavier
 from funcs import *
-from conte import*
+from conte import *
 from ohnoitgrowth import Growth
 from register import Register
 import tkinter.font as tkfont
