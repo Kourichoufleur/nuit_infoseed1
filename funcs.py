@@ -28,8 +28,9 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
+
 # --- CHARGEMENT DES IMAGES POUR TKINTER ---
-def load_images(folder):
+def load_images(folder, size=(300, 300)):
     images = []
     folder_path = resource_path(folder)
     if not os.path.exists(folder_path):
@@ -37,11 +38,16 @@ def load_images(folder):
         return images
 
     for file in os.listdir(folder_path):
-        if file.lower().endswith((".png", ".jpg", ".jpeg", ".gif")):
+        if file.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp")):
             name = os.path.splitext(file)[0]
 
             pil_img = Image.open(os.path.join(folder_path, file)).convert("RGBA")
+
+            # Resize ici 🤌
+            pil_img = pil_img.resize(size)
+
             tk_img = ImageTk.PhotoImage(pil_img)
 
             images.append((name, tk_img))
+
     return images

@@ -9,7 +9,7 @@ class Conte:
 
         self.my_screen.protocol("WM_DELETE_WINDOW", lambda: None)
 
-        self.my_screen.geometry('800x300')
+        self.my_screen.geometry(f'{main_frame.winfo_width()}x{main_frame.winfo_height()}+{int(main_frame.winfo_rootx())}+{main_frame.winfo_rooty()}')
         self.my_screen.resizable(False, False)
         self.my_screen.title('Creation de conte')
 
