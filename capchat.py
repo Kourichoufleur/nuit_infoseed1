@@ -32,7 +32,8 @@ class Capchat(tk.Toplevel):
             consigne_text += f" {seuil} {desc[1]}"
         self.consigne = tk.Label(self, text=consigne_text, font=("Arial", 12), pady=10)
         self.consigne.pack(side="top", fill="x")
-
+        self.transient(master)
+        self.lift(master)
         # --- Centrer la fenêtre ---
         self.update_idletasks()
         width, height = 650, 650
@@ -113,7 +114,7 @@ class Capchat(tk.Toplevel):
             # --- Relancer un nouveau captcha proprement ---
             new_stat, is_numeric = random.choice(all_stat)
             new_seuil = random.randint(1,10) if is_numeric else 0
-            Capchat(self.master, new_stat, new_seuil)
+            Capchat(self.master, new_stat, new_seuil,self.fun)
 
 # --- Test ---
 if __name__ == "__main__":

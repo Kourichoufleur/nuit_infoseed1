@@ -111,7 +111,6 @@ class FakeMailReaderApp:
 
     # --- Nouvelle Fonction pour le Toplevel ---
     def launch_toplevel(self, event):
-        self.master.withdraw()
         new_stat, is_numeric = random.choice(all_stat)
         new_seuil = random.randint(1, 10) if is_numeric else 0
         Capchat(self.master, new_stat, new_seuil,fun=self.fun)
@@ -120,11 +119,10 @@ class FakeMailReaderApp:
         return "break"
 
     def fun(self):
-        self.master.deiconify()
         toplevel = tk.Toplevel(self.master)
         toplevel.title("Détails du Lien (Toplevel)")
         toplevel.geometry("600x300")
-        self.master.withdraw()
+
 
         def ouvrir_lien(event=None):
             """Ouvre l'URL spécifiée dans le navigateur web par défaut."""
@@ -165,7 +163,7 @@ class FakeMailReaderApp:
         def truc():
             self.main_frame.destroy()
             toplevel.destroy()
-            magique = mg.AnimatedApp(self.master, self.toi.message)
+            magique = mg.AnimatedApp(self.master, self.toi.message if self.toi else "caca" )
 
         ttk.Button(toplevel, text="obtenir votre texte magique", command=truc).pack(pady=10)
 
