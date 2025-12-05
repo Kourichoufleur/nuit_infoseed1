@@ -25,6 +25,9 @@ class Capchat(tk.Toplevel):
         self.resizable(False, False)
         self.withdraw()
 
+
+       
+
         # --- Consigne ---
         desc = STATS_DESC[property_used]
         consigne_text = desc[0]
@@ -87,7 +90,9 @@ class Capchat(tk.Toplevel):
                 )
                 btn.grid(column=i, row=j, sticky="nsew", padx=2, pady=2)
                 self.all_b[(i,j)] = btn
-
+        
+        self.transient(master)
+        self.lift()
         self.deiconify()
         self.title("Super Capcha-t")
         self.geometry("650x650")
