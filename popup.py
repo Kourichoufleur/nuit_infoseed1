@@ -2,6 +2,7 @@ import tkinter as tk
 
 import tkinter as tk
 from funcs import *
+from screeninfo import get_monitors
 
 def desactiver_frame(frame):
     for child in frame.winfo_children():
@@ -27,26 +28,27 @@ from PIL import Image, ImageTk
 # cle : nom image / valeur : (display_name, catcha_info)
 
 POP_UPS_INFO = {
-    "boymoney": ("Vivez heureux, vivez riche", {}),
-    "cake": ("Marie_clode vous a invité pour ses 92 ans !", {}),
-    "catwall": ("Miaou adoptez moi", {}),
-    "joyfulmeadow": ("Retrouvez votre enfance perdue...", {}),
-    "omg": ("AAAAAAAAAAAAAAAA", {}),
-    "playa": ("Vous avez gagné 2 mois de vacances!", {}),
-    "scary": ("Prudence après minuit...", {}),
-    "unseriousdog": ("Besoin d'un nouveau look ?", {}),
-    "catsmugface": ("On sait qui vous êtes...", {}),
-    "creepcameraman": ("J'ai besoin de ta tête !", {}),
-    "disturbheart": ("Kristelle a publiée ceci sur votre mur", {}),
-    "freecandy": ("Bonbons gratuits pour tous !", {}),
-    "graduate": ("Je suis votre fils! graduation_info.com", {}),
-    "oh": ("Bon courage", {}),
-    "shibajujuding": ("Arrêtez de laisser les crottes au sol", {}),
-    "sigma": ("Pratiquez votre mewing tous les jours !", {}),
-    "tiredcat": ("Promo sur les vitamines C", {}),
-    "troll": ("Trololololo", {}),
-    "urfcat": ("112 messages non lus... nan mais serieux.", {}),
-    "warning": ("2 virus et demi détectés !", {}),
+    "boymoney": ("Vivez heureux, vivez riche", {"charisme":6, "maman":8}),
+    "cake": ("Marie_clode vous a invité pour ses 92 ans !", {"charisme":2, "maman":10}),
+    "catwall": ("Miaou adoptez moi", {"charisme":3, "maman":7, "chat":True}),
+    "joyfulmeadow": ("Retrouvez votre enfance perdue...", {"charisme":2, "maman":8}),
+    "omg": ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", {"charisme":5, "maman":9}),
+    "playa": ("Vous avez gagné 2 mois de vacances!", {"charisme":2, "maman":8}),
+    "scary": ("Prudence après minuit...", {"charisme":8, "maman":1}),
+    "unseriousdog": ("Besoin d'un nouveau look ?", {"charisme":6, "maman":10}),
+    "catsmugface": ("On sait qui vous êtes...", {"charisme":10, "maman":3, "chat":True}),
+    "creepcameraman": ("J'ai besoin de ta tête !", {"charisme":0, "maman":0}),
+    "disturbheart": ("Kristelle a publiée ceci sur votre mur", {"charisme":4, "maman":10}),
+    "freecandy": ("Bonbons gratuits pour tous !", {"charisme":0, "maman":0}),
+    "graduate": ("Je suis votre fils! graduation_info.com", {"charisme":6, "maman":10}),
+    "oh": ("Bon courage", {"charisme":1, "maman":2}),
+    "shibajujudging": ("Arrêtez de laisser les crottes au sol", {"charisme":7, "maman":7}),
+    "sigma": ("Pratiquez votre mewing tous les jours !", {"charisme":10, "maman":5}),
+    "tiredcat": ("Promo sur les vitamines C", {"charisme":3, "maman":5, "chat":True}),
+    "troll": ("Trololololo", {"charisme":0, "maman":1}),
+    "urfcat": ("112 messages non lus... nan mais serieux.", {"charisme":0, "maman":2, "chat":True}),
+    "warning": ("2 virus et demi détectés !", {"charisme":1, "maman":1}),
+    "classemoji":("Soyez cool dans la vie...",{"charisme":9, "maman":3}),
 
 }
 
@@ -96,13 +98,14 @@ class Popup(tk.Toplevel):
         self.destroy()
 
 
-def lancer_n_popup(frame, images=None, n=3, size=(300, 300)):
+def lancer_n_popup(frame, images=None, n=30, size=(300, 300)):
     if n <= 0: return
     import random
     if not images: images = load_images("popup_images", size=size)
 
+    ecran_princ = get_monitors()[0]
     Popup(frame, image=(choosed := random.choice(images))[1], title=POP_UPS_INFO.get(choosed[0], ("",))[0],
-          geometry=f"300x300+{random.randint(0, 1000)}+{random.randint(0, 1000)}")
+          geometry=f"300x300+{random.randint(0, abs(ecran_princ.width - 300))}+{random.randint(0, abs(ecran_princ.height - 300))}")
     frame.after(100, lambda: lancer_n_popup(frame, images, n - 1))
 
 

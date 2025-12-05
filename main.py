@@ -8,13 +8,15 @@ from conte import*
 from ohnoitgrowth import Growth
 from register import Register
 import tkinter.font as tkfont
+from mailbox import*
 toi=Register()
-#encour = tk.BooleanVar(value=True)
+
 
 
 def envoyer(event=None):
     global email,clavier
     main.withdraw()
+    toi.message=entry.get()
     desactiver_frame(root)
     entry.configure(state="readonly")
     tk.messagebox.showerror("Manque de compte", "Il vous faut un compte")
@@ -37,33 +39,32 @@ def email_envoie(event=None):
         confirmation()
         clavier.my_screen.destroy()
 
-    # vider l'entry
-
-def genlancer(i):
-    return lambda :lancer(i)
-
-
-
-
 def lancer (i):
     couleurs_arc_en_ciel_et_plus=["#FF0000","#FFA500","#FFFF00", "#00FF00", "#00FFFF","#0000FF","#4B0082", "#EE82EE","#FF00FF","#FFFFFF"]
-    fenetre = Growth(root, max_taille=300, pas=5, delai=30, text=str(i),couleur=couleurs_arc_en_ciel_et_plus[10-i])
+    fenetre = Growth(root, max_taille=250, pas=5, delai=20, text=str(i),couleur=couleurs_arc_en_ciel_et_plus[10-i])
     fenetre.demarrer_croissance(delai_initial=100)
-    """if i==1: encour.set(False)"""
 
+    if i==1: encour.set(False)
 
+global i
+i=10
+def control_sequence():
+    global i
+    if i >= 1:
+        lancer(i)
+        i -= 1
+        root.after(5000, control_sequence)
+    else:
+        root.destroy()
+        main.deiconify()
+        mailboxing=FakeMailReaderApp(main,toi)
 def confirmation():
     if(tk.messagebox.askyesno("Email","Voulez vous que l'on vous envoie un email de confirmation ?")) :
         pass
     else:
         tk.messagebox.showinfo("En fait si","Si si on va le faire quand même")
     tk.messagebox.showwarning("a maince","il y a une demande aflluente de mail veuillez attendre")
-    for i in range (10, 0, -1):
-        b= genlancer(i)
-        root.after((10-i)*6000, b)
-    """while(encour.get()):
-        pass"""
-    #root.after(5000,)
+    control_sequence()
 
 
 def envoie_mdp(evevent=None):
@@ -75,6 +76,7 @@ def envoie_mdp(evevent=None):
     print(toi.password + "   " + toi.email)
 
 main = tk.Tk()
+encour = tk.BooleanVar(value=True)
 main.title("Chat Entry")
 root= tk.Frame(main)
 root.configure(relief="groove")
